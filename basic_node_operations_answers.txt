@@ -1,0 +1,21 @@
+Questions
+
+1. Run the commands sort, wc and uniq on the commands.js file. Explain how they work and what the output was.
+
+- 'sort' looks at the first characters in a line and sorts them in order (alphabetically/numerically). Running sort on command.js returned the furthest indented lines first and moves down to the least indented. 
+
+- 'wc' returns three values. The first is the number of lines, the second is the number of words and third is the number of characters. 'wc commands.js' returns 41, 113, and 1057.]
+
+- 'uniq' checks to see if there are two or more duplicate lines one after the other and returns only one of the lines. The command.js file does not contain any back to back duplicate lines so it is returned as it looks in the code editor. 
+
+2. Using the pipe (|) connect at least two commands and run it on commands.js. Explain what the output was and why the specific data was outputted.
+
+
+let lines = 0;
+          for(let i = 0; i < data.length; i++) {
+            if(lines === 15) {
+              return;
+            } else if (data[i] === '\n') {
+              lines++;
+            };
+          }
