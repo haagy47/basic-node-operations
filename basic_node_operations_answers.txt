@@ -9,13 +9,3 @@ Questions
 - 'uniq' checks to see if there are two or more duplicate lines one after the other and returns only one of the lines. The command.js file does not contain any back to back duplicate lines so it is returned as it looks in the code editor. 
 
 2. Using the pipe (|) connect at least two commands and run it on commands.js. Explain what the output was and why the specific data was outputted.
-
-
-let lines = 0;
-          for(let i = 0; i < data.length; i++) {
-            if(lines === 15) {
-              return;
-            } else if (data[i] === '\n') {
-              lines++;
-            };
-          }
