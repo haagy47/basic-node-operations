@@ -14,7 +14,6 @@ function evaluateCmd(userInput) {
 
   switch (command) {
     case "echo":
-    //we will add the functionality of echo next within the object commandLibrary
       commandLibrary.echo(userInputArray.slice(1).join(" "));
       break;
     case "cat":
@@ -23,6 +22,11 @@ function evaluateCmd(userInput) {
     case "head":
       commandLibrary.head(userInputArray.slice(1));
       break;
+    case "tail":
+      commandLibrary.tail(userInputArray.slice(1));
+      break;
+    default:
+      console.log('That command does not exist. Please try again.');
   }
 }
 
@@ -45,13 +49,37 @@ const commandLibrary = {
           let lineCount = 0;
           let dataHead = [];
           for (let i = 0; i<= data.length; i++) {
-            if (lineCount<=5) {
-              dataHead.push(data[i]);
-            } else if (data[i] === '\n') {
+            if (data[i] === '\n') {
               lineCount++;
-            }
-          }
+            };
+            if (lineCount<10) {
+              dataHead.push(data[i]);
+            };
+          };
           done(dataHead.join(''));
+      });
+    },
+    "tail": function(fullPath) {
+      const fileName = fullPath[0];
+      fs.readFile(fileName, "utf8", (err, data) => {
+          if (err) throw err;
+          let totalLines = 0;
+          let lineCount = 0;
+          let dataTail = [];
+          for (let i = 0; i<= data.length; i++) {
+            if (data[i] === '\n') {
+              totalLines++;
+            };
+          };
+          for (let i = 0; i<= data.length; i++) {
+            if (data[i] === '\n') {
+              lineCount++;
+            };
+            if (lineCount >= totalLines - 10) {
+              dataTail.push(data[i]);
+            };
+          };
+          done(dataTail.join(''));
       });
     }
 };
