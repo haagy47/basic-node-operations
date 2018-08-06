@@ -40,17 +40,18 @@ const commandLibrary = {
    },
    "head": function(fullPath) {
       const fileName = fullPath[0];
-      fs.readFile(fileName, (err, data) => {
+      fs.readFile(fileName, "utf8", (err, data) => {
           if (err) throw err;
-          let rowCount = 0;
-          let headData = [];
-          for (let i = 0; rowCount <= 15; i++) {
-            if(data[i] === '\n') {
-              rowCount++;
-              headData.push(data[i]);
-            };
+          let lineCount = 0;
+          let dataHead = [];
+          for (let i = 0; i<= data.length; i++) {
+            if (lineCount<=5) {
+              dataHead.push(data[i]);
+            } else if (data[i] === '\n') {
+              lineCount++;
+            }
           }
-          done(headData);
+          done(dataHead.join(''));
       });
     }
 };
