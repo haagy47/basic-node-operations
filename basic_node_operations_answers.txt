@@ -9,3 +9,5 @@ Questions
 - 'uniq' checks to see if there are two or more duplicate lines one after the other and returns only one of the lines. The command.js file does not contain any back to back duplicate lines so it is returned as it looks in the code editor. 
 
 2. Using the pipe (|) connect at least two commands and run it on commands.js. Explain what the output was and why the specific data was outputted.
+
+- I used a pipe in this statement: uniq | sort commands.js. This command is supposed to check to see if there are two or more duplicate lines of code in the file, omit the duplicates, then sorts the file. There were no duplicate lines so it outputted a sorted version of the file. 
